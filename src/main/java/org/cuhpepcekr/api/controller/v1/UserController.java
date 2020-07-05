@@ -9,12 +9,10 @@ import org.cuhpepcekr.api.model.response.ListResult;
 import org.cuhpepcekr.api.model.response.SingleResult;
 import org.cuhpepcekr.api.repo.UserJpaRepo;
 import org.cuhpepcekr.api.service.ResponseService;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
-@PreAuthorize("hasRole('ROLE_USER')") // 또는 @Secured("ROLE_USER")
 @Api(tags = {"2. User"})
 @RequiredArgsConstructor
 @RestController
@@ -24,7 +22,6 @@ public class UserController {
     private final UserJpaRepo userJpaRepo;
     private final ResponseService responseService; // 결과를 처리할 Service
 
-    // @PreAuthorize("hasRole('ROLE_USER')") // 또는 @Secured("ROLE_USER")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "X-AUTH-TOKEN", value = "로그인 성공 후 access_token", required = true, dataType = "String", paramType = "header")
     })
